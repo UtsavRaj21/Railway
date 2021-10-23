@@ -1,0 +1,59 @@
+.booking{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+}
+
+.section{
+    height: 60vh;
+    background-color:blue;
+    width: 60vw;
+    
+}
+
+.title{
+    font-size:x-large;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-seat{
+    font-size:x-large;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-box{
+    font-size:large;
+    margin-left:3vw ;
+}
+
+.submit{
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-booking{
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     background-color: black;
+     color: white;
+     height: 5vh;
+     font-size:x-large;
+ 
+ }
+ 
+ .submit-booking:hover{
+     cursor: pointer;
+     transform: scale(1.1);
+ }
