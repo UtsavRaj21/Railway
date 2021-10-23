@@ -8,6 +8,20 @@ app.use(express.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(express.json())
+const cors = require("cors");
+
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+    next();
+  });
+
+  app.use(cors());
 
 let port = '8000'
 app.listen(process.env.PORT||port,function(){
@@ -22,5 +36,5 @@ app.get('/' , (req,res)=>{
 const bookingRouter = require('./routers/bookingRouter');
 const emptyRouter = require('./routers/emptyRouter');
 
- app.use('/api/book', bookingRouter);
+app.use('/api/book', bookingRouter);
 app.use('/api/empty', emptyRouter);
