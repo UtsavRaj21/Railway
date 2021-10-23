@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './bookingStyle.css'
 import axios from 'axios';
+import Chair from '../chair/chair';
 
 function Booking() {
     const [bookSeat, noOfSeat] = useState(1);
@@ -17,7 +18,7 @@ function Booking() {
             let haveSeat = 0;
             let res = [];
             let have = false;
-           // console.log(seatReq);
+            console.log(seatReq);
             // console.log(res);
             // console.log(seat);
             for(let i = 0 ; i<12;i++){
@@ -67,14 +68,15 @@ function Booking() {
 
             let seatAvailbale = await axios.get("https://railway--backend.herokuapp.com/api/empty/");
             
-            //console.log(seatAvailbale.data.user)
+            console.log(seatAvailbale.data.user)
             availableSeatNo(seatAvailbale.data.user);
             
             let arr =  await axios.get("https://railway--backend.herokuapp.com/api/book/get");
-            //console.log(arr.data)
+            console.log(arr.data)
             bookedSeat(arr.data);
 
             alert(" ticket booked -> Seat Number is " + res);
+            window.location.reload(false);
 
         }
         catch (err) {
@@ -85,12 +87,12 @@ function Booking() {
     useEffect(async () => {
         console.log("data")
         let data = await axios.get("https://railway--backend.herokuapp.com/api/empty");
-        // console.log(data)
-        // console.log(data.data)
+        console.log(data)
+        console.log(data.data)
         // let data = 10;
         let arr =  await axios.get("https://railway--backend.herokuapp.com/api/book/get");
         // let arr = [1,2,3,4,5];
-        //console.log(arr.data)
+        console.log(arr.data)
         availableSeatNo(data.data.user);
         bookedSeat(arr.data);
     },[])
@@ -116,9 +118,7 @@ function Booking() {
                 <div className="submit">
                     <div className="submit-booking" onClick={handleBooking}>Book</div>
                 </div>
-                <div>
-                    
-                </div>
+                    <Chair />
             </div>
         </div>
     )
