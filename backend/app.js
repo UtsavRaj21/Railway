@@ -36,5 +36,5 @@ app.get('/' , (req,res)=>{
 const bookingRouter = require('./routers/bookingRouter');
 const emptyRouter = require('./routers/emptyRouter');
 
-app.use('/api/book', bookingRouter);
+ app.use('/api/book', bookingRouter);
 app.use('/api/empty', emptyRouter);

@@ -7,9 +7,9 @@
 }
 
 .section{
-    height: 60vh;
-    background-color:blue;
-    width: 60vw;
+    height: 80vh;
+    background-color:rgba(0, 0, 255, 0.651);
+    width: 40vw;
     
 }
 
@@ -37,23 +37,26 @@
 .submit{
     height: 7vh;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
-.submit-booking{
-    width: 10vw;
+.booking-btn{
+    width: 7vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
     display: flex;
     justify-content: center;
     align-items: center;
-     background-color: black;
-     color: white;
-     height: 5vh;
-     font-size:x-large;
+    background-color: black;
+    color: white;
+    height: 5vh;
+    font-size:x-large;
  
  }
  
- .submit-booking:hover{
+ .booking-btn:hover {
      cursor: pointer;
      transform: scale(1.1);
  }

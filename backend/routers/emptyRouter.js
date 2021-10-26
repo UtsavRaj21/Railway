@@ -2,33 +2,35 @@ const express = require('express');
 let emptyRouter = express.Router();
 
 let emptyModel = require("../models/emptyModel")
+let bookingModel = require("../models/bookingModel")
+
 
 const getSeats = async function(req,res){
     try{
         let user = await emptyModel.findOne({"user":"Utsav"})
         res.status(200).json({
-            user:user.data
+            user:user.seat
         })
     }catch(err){
-        res.status(500).json({
-            message:err.message
-        })
+        console.log(err.message);
+        res.status(500).json("error")
     }
 }
 
 const setSeat = async function(req,res){
     try {
-        console.log(req.body)
-        console.log("hello")
-        let element = await emptyModel.create({
-            "user":"Utsav",
-            "seat":80
-       });
+        let user = await emptyModel.findOne({"user":"Utsav"})
+        user.seat = 80;
+        await user.save();
+        let arrUser = await bookingModel.findOne({"user":"Utsav"})
+        arrUser.seatOccupied = [];
+        await arrUser.save();
         res.status(200).json({
-            element: element,
+            user: user.seat,
+            seatOccupied:arrUser.seatOccupied
         });
     } catch (err) {
-        console.error(err);
+        console.error(err.message);
         res.status(500).json({
             message: "Server error",
            

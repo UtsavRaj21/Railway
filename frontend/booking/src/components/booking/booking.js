@@ -52,7 +52,7 @@ function Booking() {
             if(!have){
                 for(let i = 0 ; i<12;i++){
                     for(let j = 0;j<7;j++){
-                        if(seatReq-->0){
+                        if(!seat.includes((i*7)+j) && seatReq-->0){
                             seat.push((i*7)+j);
                             res.push((i*7)+j);
                         }
@@ -78,6 +78,18 @@ function Booking() {
             alert(" ticket booked -> Seat Number is " + res);
             window.location.reload(false);
 
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+    const handleReset = async () =>{
+        try {
+            let seatReset = await axios.post("https://railway--backend.herokuapp.com/api/empty/");
+            console.log(seatReset);
+            availableSeatNo(80);
+            bookedSeat([]);
+            window.location.reload(false);
         }
         catch (err) {
             console.log(err);
@@ -116,9 +128,10 @@ function Booking() {
                     </select>
                 </div>
                 <div className="submit">
-                    <div className="submit-booking" onClick={handleBooking}>Book</div>
+                     <div className="booking-btn" onClick={handleReset}>Reset</div>
+                     <div className="booking-btn" onClick={handleBooking}>Book</div>
                 </div>
-                    <Chair />
+                <Chair />
             </div>
         </div>
     )

@@ -130,7 +130,6 @@ function Chair() {
             <div className="row">
                 <div className="col1" style={{ backgroundColor: "red" }}>  Occupied Seat</div>
                 <div className="col1" style={{ backgroundColor: "white",color: 'black'}}> Available Seat</div>
-               
             </div>
 
         </div>
